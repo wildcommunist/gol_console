@@ -4,9 +4,13 @@ use std::thread::sleep;
 use std::time::Duration;
 use crossterm::terminal::ClearType;
 
+const WIDTH: usize = 140;
+const HEIGHT: usize = 75;
+
 fn main() {
     let mut game = Game::new();
 
+    // create a simple methuselah
     game.set_cell(50, 50, true);
     game.set_cell(50, 51, true);
     game.set_cell(49, 51, true);
@@ -22,9 +26,6 @@ fn main() {
         sleep(sleep_time);
     }
 }
-
-const WIDTH: usize = 140;
-const HEIGHT: usize = 75;
 
 struct Game {
     cells: [[bool; WIDTH]; HEIGHT],
@@ -110,5 +111,3 @@ fn render(game: &Game) {
     // Flush the output buffer
     stdout().flush().unwrap();
 }
-
-fn render_border() {}
